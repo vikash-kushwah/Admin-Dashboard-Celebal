@@ -316,30 +316,6 @@ import { useCalendar } from '../features/calendar/hooks/useCalendar';
 function EventComponent() {
   const { events, addEvent } = useCalendar();
   // Handle events
-}
-```
-
-## 🛠️ Development Tools
-
-### Recommended VSCode Extensions
-- ESLint
-- Prettier
-- Tailwind CSS IntelliSense
-- ES7+ React/Redux/React-Native snippets
-- GitLens
-- Import Cost
-
-
-### Code Quality Tools
-- ESLint for code linting
-- Prettier for code formatting
-- PostCSS for CSS processing
-- Tailwind CSS for utility-first styling
-
-### Testing Tools
-- Jest for unit testing
-- React Testing Library for component testing
-- Cypress (planned) for E2E testing
 
 ## 🏗️ Component Architecture
 
@@ -374,26 +350,6 @@ calendar/
 └── utils/          # Helper functions
     └── calendar-utils.js
 ```
-
-This architecture promotes:
-- 🎯 Clear separation of concerns
-- ♻️ Code reusability
-- 🔍 Easy maintenance
-- 📦 Feature encapsulation
-
-## 👏 Credits
-
-- Inspired by [JavaScript Mastery](https://youtu.be/jx5hdo50a2M)
-- Built with [React](https://reactjs.org/)
-- Styled with [Tailwind CSS](https://tailwindcss.com/)
-- Charts by [Chart.js](https://www.chartjs.org/)
-
-## 🌐 Browser Support
-
-The dashboard is compatible with:
-- Chrome/Edge (latest 2 versions)
-- Firefox (latest 2 versions)
-- Safari (latest 2 versions)
 
 ## 🤝 Contributing
 
