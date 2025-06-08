@@ -1,70 +1,421 @@
-# Getting Started with Create React App
+# 🚀 React Admin Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern admin dashboard application built with React.js and Tailwind CSS. Features a responsive design with light/dark themes, data visualization, task management, and more. Created as part of the Celebal Technologies React internship program.
 
-## Available Scripts
 
-In the project directory, you can run:
+## 📸 Screenshots
 
-### `npm start`
+### Dashboard
+![Dashboard](./src/assets/screenshots/dashboard.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Analytics
+![Analytics](./src/assets/screenshots/analytics.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Calendar
+![Calendar](./src/assets/screenshots/calendar.png)
 
-### `npm test`
+### Kanban Board
+![Kanban](./src/assets/screenshots/kanban.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Notifications
+![Notifications](./src/assets/screenshots/notifications.png)
 
-### `npm run build`
+### Theme Settings
+| Light Mode | Dark Mode |
+|------------|-----------|
+| ![Settings Light](./src/assets/screenshots/settings-light.png) | ![Settings Dark](./src/assets/screenshots/settings-dark.png) |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ✨ Key Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- 🎨 **Modern UI/UX**: Clean design with Tailwind CSS and Radix UI primitives
+- 🌓 **Dark/Light Themes**: Built-in theme support with context API
+- 📊 **Data Visualization**: Interactive charts with Chart.js and React-Chartjs-2
+- 📋 **Kanban Board**: Drag-and-drop task management with React DnD
+- 📅 **Calendar**: Event scheduling with React Day Picker
+- 📱 **Fully Responsive**: Mobile-first design approach
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## ⚡ Features
 
-### `npm run eject`
+### 🎨 Dashboard Overview
+- Interactive revenue and order analytics with Chart.js
+- Key performance metrics with trend indicators
+- Payment method distribution visualization 
+- Recent sales activity tracking
+- Activity timeline with real-time updates
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 📊 Analytics
+- Revenue trends with line charts
+- Payment methods breakdown with pie charts
+- Regional performance metrics
+- Conversion rate monitoring
+- Interactive data filtering by time range
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 📅 Calendar & Events
+- Full calendar view with event indicators
+- Event scheduling and management
+- Upcoming events list
+- Event creation and editing interface
+- Event categorization (meetings, deadlines, etc.)
+- Persistent storage with localStorage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 📋 Kanban Board
+- Drag-and-drop task management
+- Multiple task status columns (Todo, In Progress, Done)
+- Task creation and editing
+- Task descriptions and status tracking
+- Persistent task storage with localStorage
+- Task filtering and organization
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 🔔 Notifications
+- Real-time notification system
+- Customizable notification preferences
+- Email notification settings
+- Push notification controls
+- Task reminder configuration
 
-## Learn More
+### ⚙️ UI/UX Features
+- Modern and clean design with Tailwind CSS
+- Light/Dark theme support
+- Responsive layout for all devices
+- Interactive tooltips and hover states
+- Loading states and animations
+- Custom UI components with Radix primitives
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 📱 Core Components
+- Reusable chart components with Chart.js
+- Custom data visualization tools
+- Responsive data tables
+- Interactive forms with validation
+- Modal dialogs and overlays
+- Loading skeletons for better UX
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🔧 Prerequisites
 
-### Code Splitting
+Before you begin, ensure you have the following installed:
+- Node.js (v18.3.0 or higher)
+- npm (v9.0.0 or higher)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Core Dependencies
+- React v18.3.1
+- React Router DOM v6.30.1
+- Tailwind CSS v3.2.7
+- Chart.js v4.4.9
+- Recharts v2.15.3
+- Radix UI Components v2.x
+- React Beautiful DnD v13.1.1
+- React Day Picker v9.7.0
+- Lucide React v0.513.0
 
-### Analyzing the Bundle Size
+You can check your versions with:
+```bash
+node --version
+npm --version
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🚀 Quick Start
 
-### Making a Progressive Web App
+1. **Clone the repository**
+```bash
+git clone https://github.com/vikash-kushwah/admin-dashboard-celebal.git
+cd admin-dashboard-celebal
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+2. **Install dependencies**
+```bash
+npm install
+```
 
-### Advanced Configuration
+3. **Start the development server**
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+4. **Open your browser**
+Navigate to `http://localhost:3000`
 
-### Deployment
+## 📦 Build for Production
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. **Create optimized build**
+```bash
+npm run build
+```
 
-### `npm run build` fails to minify
+2. **Test production build locally**
+```bash
+npx serve -s build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🔧 Configuration
+
+### Tailwind Configuration
+The theme is configured in `tailwind.config.js` with custom colors, fonts, and components:
+
+```javascript
+module.exports = {
+  darkMode: ["class"],
+  theme: {
+    extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        primary: "hsl(var(--primary))",
+        secondary: "hsl(var(--secondary))",
+        chart: {
+          1: "hsl(var(--chart-1))",
+          2: "hsl(var(--chart-2))"
+        }
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif']
+      }
+    }
+  }
+}
+```
+
+## 📁 Project Structure
+
+```
+src/
+├── components/
+│   ├── charts/         # Chart components
+│   │   └── analytics-chart.js
+│   ├── data-display/   # Data visualization
+│   ├── layout/         # Layout components
+│   │   ├── app-header.js
+│   │   └── app-sidebar.js
+│   └── ui/            # Reusable UI components
+├── contexts/
+│   └── theme.js       # Theme context provider
+├── features/
+│   ├── dashboard/     # Main dashboard
+│   ├── calendar/      # Calendar & events
+│   ├── kanban/       # Task management
+│   └── users/        # User management
+├── hooks/            # Custom React hooks
+├── lib/
+│   ├── constants/    # App constants
+│   └── utils.js      # Helper functions
+└── data/
+    └── dummy-data.js  # Mock data
+```
+
+> **Note:** Features are organized into self-contained modules for better maintainability.
+
+## 🚀 Deployment
+
+1. Build the project:
+```bash
+npm run build
+```
+
+2. Deploy to your preferred hosting platform:
+- Vercel
+- Netlify
+- AWS Amplify
+- GitHub Pages
+
+## 📱 Key Components
+
+### Dashboard (`features/dashboard`)
+- `analytics-chart.js`: Interactive revenue and order line charts
+- `sample-pie-chart.js`: Payment method distribution visualization
+- `stats-card.js`: KPI cards with trend indicators
+- `activity-timeline.js`: Real-time activity feed
+- `regional-performance.js`: Geographic performance metrics
+
+### Charts (`components/charts`)
+- Base chart configuration with Chart.js integration
+- Multi-dataset line charts for trend analysis
+- Interactive pie charts with tooltips
+- Customizable colors and themes
+- Responsive chart layouts
+- Data formatting utilities
+
+### UI System (`components/ui`)
+- Calendar component with event support
+- Custom button and card components
+- Modal and dropdown systems
+- Form controls and inputs
+- Avatar and badge components
+- Table system with sorting
+- Loading skeletons
+
+### Calendar System (`features/calendar`)
+- `event-calendar.js`: Main calendar view
+- `event-form.js`: Event creation/editing form
+- `useCalendar.js`: Calendar state management
+- `calendar-utils.js`: Date manipulation utilities
+- Event persistence with localStorage
+- Event categorization and filtering
+
+### Kanban Board (`features/kanban`)
+- `droppable-column.js`: Task status columns
+- `draggable-task-card.js`: Drag-and-drop tasks
+- `task-form.js`: Task creation/editing
+- `kanban-card.js`: Task display component
+- React DnD integration
+- Task state management
+
+### Analytics (`features/analytics`)
+- Revenue analytics visualization
+- Payment methods distribution
+- Regional performance charts
+- Custom analytics toolbar
+- Time range filtering
+- Data export functionality
+
+### Notification System (`features/notifications`)
+- Notification center component
+- Notification preferences panel
+- Email notification settings
+- Push notification controls
+- Notification state management
+
+## 🔮 Planned Features
+
+- 🔄 Real-time Data Integration
+- 🔐 Authentication & Authorization
+- 🌐 Multi-language Support (i18n)
+- 📱 Progressive Web App (PWA)
+- 🔍 Advanced Search with Filters
+- 📊 Additional Chart Types & Visualizations
+
+## 💡 Development Tips
+
+### Using Theme Context
+```javascript
+import { useTheme } from '../contexts/theme';
+
+function MyComponent() {
+  const { theme, toggleTheme } = useTheme();
+  return (
+    <div className={theme === 'dark' ? 'bg-background text-foreground' : ''}>
+      {/* Component content */}
+    </div>
+  );
+}
+```
+
+### Creating Charts
+```javascript
+import { AnalyticsChart } from '../components/charts/analytics-chart';
+
+const MyChart = () => (
+  <AnalyticsChart
+    title="Revenue Analytics"
+    data={revenueData}
+    categories={['Monthly', 'Weekly']}
+  />
+);
+```
+
+### Managing Calendar Events
+```javascript
+import { useCalendar } from '../features/calendar/hooks/useCalendar';
+
+function EventComponent() {
+  const { events, addEvent } = useCalendar();
+  // Handle events
+}
+```
+
+## 🛠️ Development Tools
+
+### Recommended VSCode Extensions
+- ESLint
+- Prettier
+- Tailwind CSS IntelliSense
+- ES7+ React/Redux/React-Native snippets
+- GitLens
+- Import Cost
+
+
+### Code Quality Tools
+- ESLint for code linting
+- Prettier for code formatting
+- PostCSS for CSS processing
+- Tailwind CSS for utility-first styling
+
+### Testing Tools
+- Jest for unit testing
+- React Testing Library for component testing
+- Cypress (planned) for E2E testing
+
+## 🏗️ Component Architecture
+
+### Core Components (`components/`)
+Our components follow a modular architecture:
+
+```
+components/
+├── charts/           # Chart components with Chart.js integration
+├── data-display/     # Data presentation components
+├── layout/          # Core layout structure
+└── ui/             # Reusable UI components
+```
+
+### Feature Modules (`features/`)
+Each feature is a self-contained module with its own:
+- Components
+- Hooks
+- Pages
+- Utils
+
+For example, the Calendar feature:
+```
+calendar/
+├── components/       # Feature-specific components
+│   ├── event-calendar.js
+│   └── event-form.js
+├── hooks/           # Custom hooks
+│   └── useCalendar.js
+├── pages/           # Route pages
+│   └── index.js
+└── utils/          # Helper functions
+    └── calendar-utils.js
+```
+
+This architecture promotes:
+- 🎯 Clear separation of concerns
+- ♻️ Code reusability
+- 🔍 Easy maintenance
+- 📦 Feature encapsulation
+
+## 👏 Credits
+
+- Inspired by [JavaScript Mastery](https://youtu.be/jx5hdo50a2M)
+- Built with [React](https://reactjs.org/)
+- Styled with [Tailwind CSS](https://tailwindcss.com/)
+- Charts by [Chart.js](https://www.chartjs.org/)
+
+## 🌐 Browser Support
+
+The dashboard is compatible with:
+- Chrome/Edge (latest 2 versions)
+- Firefox (latest 2 versions)
+- Safari (latest 2 versions)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch:
+```bash
+git checkout -b feature/my-new-feature
+```
+3. Commit your changes:
+```bash
+git commit -am 'Add some feature'
+```
+4. Push to the branch:
+```bash
+git push origin feature/my-new-feature
+```
+5. Submit a pull request
+
+
+## 👨‍💻 Author
+
+**Vikash Kushwah**
+- Project created as part of the Celebal Technologies React internship program
+- [GitHub Profile](https://github.com/vikash-kushwah)
+- [Project Repository](https://github.com/vikash-kushwah/admin-dashboard-celebal)
