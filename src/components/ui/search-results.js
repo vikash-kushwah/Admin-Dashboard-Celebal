@@ -1,42 +1,56 @@
 import React from 'react';
-import { Command } from 'lucide-react';
+import { Search, FileText, Users, Settings, BarChart2 } from 'lucide-react';
+
+const iconMap = {
+  page: FileText,
+  users: Users,
+  settings: Settings,
+  analytics: BarChart2,
+};
 
 export function SearchResults({ results, isLoading, onResultClick }) {
-  if (results.length === 0 && !isLoading) {
-    return null;
+  if (isLoading) {
+    return (
+      <div className="p-4 text-center text-sm text-muted-foreground">
+        <div className="flex items-center justify-center space-x-2">
+          <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+          <span>Searching...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (results.length === 0) {
+    return (
+      <div className="p-4 text-center text-sm text-muted-foreground">
+        <Search className="mx-auto h-6 w-6 mb-2" />
+        <p>No results found</p>
+      </div>
+    );
   }
 
   return (
-    <div className="absolute top-full left-0 right-0 z-50 mt-2 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md">
-      <div className="p-2">
-        {isLoading ? (
-          <div className="flex items-center gap-2 p-4 text-sm text-muted-foreground">
-            Searching...
-          </div>
-        ) : results.length === 0 ? (
-          <div className="flex items-center gap-2 p-4 text-sm text-muted-foreground">
-            No results found
-          </div>
-        ) : (
-          <div className="space-y-1">
-            {results.map((result, index) => (
-              <button
-                key={index}
-                className="flex w-full items-center gap-2 rounded-sm px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
-                onClick={() => onResultClick(result)}
-              >
-                <Command className="h-4 w-4" />
-                <div className="flex flex-col">
-                  <span className="font-medium">{result.title}</span>
-                  <span className="text-xs text-muted-foreground">
-                    {result.description}
-                  </span>
+    <div className="py-2">
+      {results.map((result) => {
+        const Icon = iconMap[result.type] || FileText;
+        return (
+          <button
+            key={result.id}
+            onClick={() => onResultClick(result)}
+            className="w-full px-4 py-2 text-left hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none"
+          >
+            <div className="flex items-center space-x-3">
+              <Icon className="h-4 w-4 text-muted-foreground" />
+              <div>
+                <div className="font-medium">{result.title}</div>
+                <div className="text-xs text-muted-foreground">
+                  {result.path}
                 </div>
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
+              </div>
+            </div>
+          </button>
+        );
+      })}
     </div>
   );
 }

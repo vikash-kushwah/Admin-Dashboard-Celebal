@@ -7,7 +7,7 @@ import { cn } from '../../lib/utils';
  * 
  * @param {Object} props - Component props
  * @param {boolean} props.checked - Whether the switch is checked
- * @param {Function} props.onChange - Function to handle change event
+ * @param {Function} props.onCheckedChange - Function to handle change event
  * @param {Object} props.className - Additional CSS classes
  * @returns {JSX.Element} Switch component
  */
@@ -39,33 +39,33 @@ export function Switch({
 
   const sizeClass = sizes[size];
 
+  const handleClick = () => {
+    if (!disabled && onCheckedChange) {
+      onCheckedChange(!checked);
+    }
+  };
+
   return (
     <button
+      type="button"
       role="switch"
       aria-checked={checked}
-      data-state={checked ? 'checked' : 'unchecked'}
       disabled={disabled}
-      onClick={() => onCheckedChange && onCheckedChange(!checked)}
-      className={cn(
-        'group relative inline-flex shrink-0 cursor-pointer items-center rounded-full transition-colors',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-        'disabled:cursor-not-allowed disabled:opacity-50',
-        checked ? 'bg-primary' : 'bg-input',
-        sizeClass.switch,
-        className
-      )}
-      {...props}
+      onClick={handleClick}
+      className={`
+        relative inline-flex h-6 w-11 items-center rounded-full
+        transition-colors focus-visible:outline-none focus-visible:ring-2
+        focus-visible:ring-ring focus-visible:ring-offset-2
+        ${checked ? 'bg-primary' : 'bg-input'}
+        ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}
+      `}
     >
       <span
-        className={cn(
-          'pointer-events-none block rounded-full bg-background shadow-lg ring-0 transition-transform',
-          'group-hover:scale-110',
-          checked ? sizeClass.translate : 'translate-x-0',
-          sizeClass.thumb
-        )}
-        style={{
-          transform: `${checked ? `translateX(${parseInt(sizeClass.switch.split('w-')[1]) - parseInt(sizeClass.thumb.split('w-')[1]) - 4}px)` : 'translateX(2px)'}`,
-        }}
+        className={`
+          inline-block h-4 w-4 transform rounded-full bg-background
+          transition-transform
+          ${checked ? 'translate-x-6' : 'translate-x-1'}
+        `}
       />
     </button>
   );

@@ -1,16 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Card = ({ className = '', children, ...props }) => {
+export function Card({ children, className = '' }) {
   return (
-    <div
-      className={`rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-200 hover:shadow-md ${className}`}
-      {...props}
-    >
+    <div className={`rounded-lg border bg-card text-card-foreground shadow-sm ${className}`}>
       {children}
     </div>
   );
-};
+}
 
 export const CardHeader = ({ className = '', children, ...props }) => {
   return (

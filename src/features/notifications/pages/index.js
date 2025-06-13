@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '../../../components/ui/card';
 import { NotificationCenter } from '../../../components/ui/notification-center';
 import { Switch } from '../../../components/ui/switch';
 import { useNotifications } from '../../../contexts/notifications';
+import { useSettings } from '../../../contexts/settings';
 
 export default function Notifications() {
   const { notifications, clearNotification, clearAllNotifications } = useNotifications();
+  const { settings, updateSettings } = useSettings();
+
+  const handleNotificationSettingChange = (key, value) => {
+    updateSettings({
+      notifications: {
+        ...settings.notifications,
+        [key]: value,
+      },
+    });
+  };
 
   return (
     <div className="grid gap-6">
@@ -22,7 +33,10 @@ export default function Notifications() {
                   Receive email notifications for important updates
                 </div>
               </div>
-              <Switch />
+              <Switch
+                checked={settings.notifications.email}
+                onCheckedChange={(checked) => handleNotificationSettingChange('email', checked)}
+              />
             </div>
             <div className="flex items-center justify-between">
               <div>
@@ -31,16 +45,34 @@ export default function Notifications() {
                   Get browser notifications for new messages and updates
                 </div>
               </div>
-              <Switch />
+              <Switch
+                checked={settings.notifications.desktop}
+                onCheckedChange={(checked) => handleNotificationSettingChange('desktop', checked)}
+              />
             </div>
             <div className="flex items-center justify-between">
               <div>
-                <div className="font-medium">Task Reminders</div>
+                <div className="font-medium">Sound Alerts</div>
                 <div className="text-sm text-muted-foreground">
-                  Get notified about upcoming task deadlines
+                  Play sound for new notifications
                 </div>
               </div>
-              <Switch />
+              <Switch
+                checked={settings.notifications.sound}
+                onCheckedChange={(checked) => handleNotificationSettingChange('sound', checked)}
+              />
+            </div>
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="font-medium">Enable Notifications</div>
+                <div className="text-sm text-muted-foreground">
+                  Turn on/off all notifications
+                </div>
+              </div>
+              <Switch
+                checked={settings.notifications.enabled}
+                onCheckedChange={(checked) => handleNotificationSettingChange('enabled', checked)}
+              />
             </div>
           </div>
         </CardContent>

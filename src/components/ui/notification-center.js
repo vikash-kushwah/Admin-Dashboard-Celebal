@@ -1,123 +1,69 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Bell, Check, X } from 'lucide-react';
-import { notifications } from '../../data/dummy-data';
-import { Badge } from './badge';
-import { formatTimeAgo } from '../../lib/notification-utils';
+import React from 'react';
+import { Bell, Check, X, AlertCircle, Info } from 'lucide-react';
+import { useNotifications } from '../../contexts/notifications';
+import { formatDistanceToNow } from 'date-fns';
 
-export const NotificationCenter = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [unreadNotifications, setUnreadNotifications] = useState(notifications);
-  const dropdownRef = useRef(null);
+const NotificationIcon = ({ type }) => {
+  switch (type) {
+    case 'success':
+      return <Check className="h-5 w-5 text-green-500" />;
+    case 'error':
+      return <X className="h-5 w-5 text-red-500" />;
+    case 'warning':
+      return <AlertCircle className="h-5 w-5 text-yellow-500" />;
+    default:
+      return <Info className="h-5 w-5 text-blue-500" />;
+  }
+};
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
+export function NotificationCenter() {
+  const { notifications, removeNotification, clearNotifications } = useNotifications();
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const unreadCount = unreadNotifications.filter(n => !n.read).length;
-
-  const handleNotificationClick = (id) => {
-    setUnreadNotifications(prev =>
-      prev.map(n => (n.id === id ? { ...n, read: true } : n))
+  if (notifications.length === 0) {
+    return (
+      <div className="p-4 text-center">
+        <Bell className="mx-auto h-8 w-8 text-muted-foreground" />
+        <p className="mt-2 text-sm text-muted-foreground">No notifications</p>
+      </div>
     );
-  };
-
-  const handleMarkAllRead = () => {
-    setUnreadNotifications(prev => prev.map(n => ({ ...n, read: true })));
-  };
-
-  const handleDismiss = (id) => {
-    setUnreadNotifications(prev => prev.filter(n => n.id !== id));
-  };
+  }
 
   return (
-    <div className="relative" ref={dropdownRef}>
-      <button
-        className="relative rounded-full p-2 hover:bg-accent"
-        aria-label="Notifications"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <Bell className="h-5 w-5" />
-        {unreadCount > 0 && (
-          <Badge
-            variant="destructive"
-            className="absolute -right-1 -top-1 h-5 w-5 rounded-full p-0 text-xs"
+    <div className="w-full">
+      <div className="flex items-center justify-between border-b px-4 py-2">
+        <h3 className="font-semibold">Notifications</h3>
+        <button
+          onClick={clearNotifications}
+          className="text-sm text-muted-foreground hover:text-foreground"
+        >
+          Clear all
+        </button>
+      </div>
+      <div className="max-h-[400px] overflow-y-auto">
+        {notifications.map((notification) => (
+          <div
+            key={notification.id}
+            className="flex items-start gap-3 border-b p-4 last:border-0 hover:bg-accent/50"
           >
-            {unreadCount}
-          </Badge>
-        )}
-      </button>
-
-      {isOpen && (
-        <div className="absolute right-0 top-full z-50 mt-2 w-96 rounded-lg border bg-card p-4 text-card-foreground shadow-lg">
-          <div className="mb-4 flex items-center justify-between">
-            <h3 className="font-semibold">Notifications</h3>
-            {unreadCount > 0 && (
-              <button
-                className="text-xs text-muted-foreground hover:text-foreground"
-                onClick={handleMarkAllRead}
-              >
-                Mark all as read
-              </button>
-            )}
-          </div>
-          <div className="space-y-1 max-h-[400px] overflow-auto">
-            {unreadNotifications.map((notification) => (
-              <div
-                key={notification.id}
-                className={`notification-item ${!notification.read ? 'notification-unread' : ''}`}
-                onClick={() => handleNotificationClick(notification.id)}
-              >
-                <div className="notification-icon">
-                  {React.createElement(notification.icon || Bell, {
-                    className: 'h-4 w-4 text-primary',
-                  })}
-                </div>
-                <div className="notification-content">
-                  <p className="notification-title">{notification.title}</p>
-                  <p className="notification-message">{notification.message}</p>
-                  <p className="notification-time">
-                    {formatTimeAgo(new Date(notification.timestamp))}
-                  </p>
-                  <div className="notification-actions">
-                    <button 
-                      className="notification-action-button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleNotificationClick(notification.id);
-                      }}
-                    >
-                      <Check className="h-3 w-3 mr-1 inline" />
-                      Mark as read
-                    </button>
-                    <button 
-                      className="notification-action-button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleDismiss(notification.id);
-                      }}
-                    >
-                      <X className="h-3 w-3 mr-1 inline" />
-                      Dismiss
-                    </button>
-                  </div>
-                </div>
+            <NotificationIcon type={notification.type} />
+            <div className="flex-1 space-y-1">
+              <div className="flex items-start justify-between">
+                <p className="text-sm font-medium">{notification.title}</p>
+                <button
+                  onClick={() => removeNotification(notification.id)}
+                  className="ml-2 text-muted-foreground hover:text-foreground"
+                >
+                  <X className="h-4 w-4" />
+                </button>
               </div>
-            ))}
-            {unreadNotifications.length === 0 && (
-              <p className="text-center text-sm text-muted-foreground py-4">
-                No notifications
+              <p className="text-sm text-muted-foreground">{notification.message}</p>
+              <p className="text-xs text-muted-foreground">
+                {formatDistanceToNow(new Date(notification.createdAt), { addSuffix: true })}
               </p>
-            )}
+            </div>
           </div>
-        </div>
-      )}
+        ))}
+      </div>
     </div>
   );
-};
+}
