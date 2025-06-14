@@ -6,7 +6,9 @@ A modern admin dashboard application built with React.js and Tailwind CSS. Featu
 ## 📸 Screenshots
 
 ### Dashboard
-![Dashboard](./src/assets/screenshots/dashboard.png)
+| Light Mode | Dark Mode |
+|------------|-----------|
+| ![Dashboard Light](./src/assets/screenshots/dashboard-light.png) | ![Dashboard Dark with Notification](./src/assets/screenshots/dashboard-dark-with-notification.png) |
 
 ### Analytics
 ![Analytics](./src/assets/screenshots/analytics.png)
